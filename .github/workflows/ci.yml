@@ -1,0 +1,100 @@
+name: CI
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+
+env:
+  UNITY_VERSION: 6000.2.1f1
+  PROJECT_PATH: .
+
+jobs:
+  tests:
+    name: Run Edit/PlayMode Tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # Cache the Library/ folder to speed up imports
+      - uses: actions/cache@v4
+        with:
+          path: Library
+          key: Library-${{ env.UNITY_VERSION }}-${{ hashFiles('**/Packages/manifest.json') }}
+          restore-keys: |
+            Library-${{ env.UNITY_VERSION }}-
+            Library-
+
+      - name: Unity Test Runner
+        uses: game-ci/unity-test-runner@v4
+        with:
+            projectPath: ${{ env.PROJECT_PATH }}
+            unityVersion: ${{ env.UNITY_VERSION }}
+            githubToken: ${{ secrets.GITHUB_TOKEN }}
+            # optional coverage
+            customParameters: -enableCodeCoverage
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+
+  build_client_win:
+    name: Build Windows Client (x64)
+    needs: tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/cache@v4
+        with:
+          path: Library
+          key: Library-${{ env.UNITY_VERSION }}-${{ hashFiles('**/Packages/manifest.json') }}
+          restore-keys: |
+            Library-${{ env.UNITY_VERSION }}-
+            Library-
+
+      - name: Unity Builder (Windows)
+        uses: game-ci/unity-builder@v4
+        with:
+          projectPath: ${{ env.PROJECT_PATH }}
+          unityVersion: ${{ env.UNITY_VERSION }}
+          targetPlatform: StandaloneWindows64
+          buildName: CityBlockClient
+          buildsPath: Builds
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+
+      - name: Upload client artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: client-win64
+          path: Builds/**
+
+  build_server_linux:
+    name: Build Linux Dedicated Server (x64)
+    needs: tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/cache@v4
+        with:
+          path: Library
+          key: Library-${{ env.UNITY_VERSION }}-${{ hashFiles('**/Packages/manifest.json') }}
+          restore-keys: |
+            Library-${{ env.UNITY_VERSION }}-
+            Library-
+
+      - name: Unity Builder (Linux Dedicated Server)
+        uses: game-ci/unity-builder@v4
+        with:
+          projectPath: ${{ env.PROJECT_PATH }}
+          unityVersion: ${{ env.UNITY_VERSION }}
+          targetPlatform: StandaloneLinux64
+          # Use Unity's Dedicated Server subtarget:
+          customParameters: -standaloneBuildSubtarget Server
+          buildName: CityBlockServer
+          buildsPath: Builds
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+
+      - name: Upload server artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: server-linux64
+          path: Builds/**

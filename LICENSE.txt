@@ -1,0 +1,51 @@
+City Block Evaluation & Educational License (CBEEL) v1.0
+Version 1.0 — 2025-08-25
+
+Copyright (c) 2025 Emily Bouchard
+
+1. Definitions
+   “Project” means the source code, assets, and documentation contained in this repository.
+   “You” means any individual or entity exercising rights under this License.
+   “Demonstration & Evaluation” means viewing, downloading, compiling, running, and publicly displaying the Project solely to assess its features, performance, or the author’s capabilities, without offering it as a product or service to third parties.
+   “Educational Institution” means an accredited school, college, university, or comparable non-profit organization that provides formal instruction.
+   “Educational Use” means use by an Educational Institution (including its instructors and enrolled students) for classroom teaching, assignments, non-commercial research, and internal demonstrations as part of a course or curriculum.
+
+2. Ownership
+   The Project is and remains the sole copyrighted work of the author above. No ownership is transferred by this License.
+
+3. License Grants (Limited)
+   3.1 Demonstration & Evaluation Grant. Subject to the terms below, the author grants You a non-exclusive, worldwide, revocable, royalty-free license to:
+       (a) view, download, compile, and run the Project; and
+       (b) display the running Project (e.g., screenshots, videos) for demonstration and evaluation purposes.
+   3.2 Educational Use Grant. Subject to the terms below, Educational Institutions (including their instructors and enrolled students) are additionally granted rights to:
+       (a) copy, modify, compile, and run the Project for Educational Use;
+       (b) create and distribute course materials that include portions of the Project, to enrolled students and staff for a specific course; and
+       (c) host private or public forks or repositories containing the Project or modifications to it when required for coursework, provided they include this License and attribution and are not used for any commercial purpose.
+   3.3 Attribution. All copies of the Project, in whole or in part, must retain the above copyright notice and this License.
+
+4. Restrictions
+   4.1 No Commercial Use. You may not use, copy, modify, host, provide access to, or distribute the Project, in whole or in part, for any commercial purpose, including without limitation selling, licensing, offering as a service (SaaS), ad-supported distribution, monetized tutorials, or paid training.
+   4.2 No Production Deployment. You may not deploy the Project for end users outside Demonstration & Evaluation or Educational Use. Any public server or service that allows non-participants to play or interact with the Project is prohibited.
+   4.3 No General Redistribution. Except as expressly permitted under Section 3.2 for Educational Use, You may not redistribute the Project or derivative works. Linking to the original repository is encouraged instead.
+   4.4 No Trademark Rights. This License does not grant rights to use the author’s name, logo, or project marks to endorse or promote any product or service.
+   4.5 No Patent License. No patent rights are granted under this License.
+
+5. Platform Exception (GitHub)
+   If this Project is hosted on GitHub, You are permitted to fork, clone, and submit pull requests to the extent necessary to use GitHub’s collaboration features. Any such copies and contributions remain subject to this License, and may not be used in violation of the Restrictions above.
+
+6. Contributions
+   Unless a separate contributor agreement is signed, any contributions You submit are licensed to the author under the same terms as this Project and may be incorporated, relicensed, or rejected at the author’s discretion.
+
+7. Termination
+   This License terminates automatically if You breach any of its terms. Upon termination, You must cease use and destroy any copies in Your possession, except that Educational Institutions may retain archival copies of student work created under Section 3.2 for academic records. The author may reinstate rights in writing.
+
+8. Disclaimer of Warranty
+   THE PROJECT IS PROVIDED “AS IS” AND “AS AVAILABLE,” WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, NON-INFRINGEMENT, OR THAT THE PROJECT WILL BE ERROR-FREE OR SECURE.
+
+9. Limitation of Liability
+   TO THE MAXIMUM EXTENT PERMITTED BY LAW, IN NO EVENT WILL THE AUTHOR BE LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT, OR OTHERWISE, ARISING FROM, OUT OF, OR IN CONNECTION WITH THE PROJECT OR THIS LICENSE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+10. Miscellaneous
+   If any provision of this License is held unenforceable, the remaining provisions will continue in full force and effect. This License is governed by the laws of the author’s domicile, without regard to conflict-of-laws rules.
+
+Commercial licensing and other permissions are available upon request. Please open an issue in this repository to initiate contact.
