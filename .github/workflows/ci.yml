@@ -13,10 +13,30 @@ jobs:
     name: Run Edit/PlayMode Tests
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      # Checkout (without LFS)
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      # Git LFS
+      - name: Create LFS file list
+        run: git lfs ls-files -l | cut -d' ' -f1 | sort > .lfs-assets-id
+        
+      - name: Restore LFS cache
+        uses: actions/cache@v4
+        id: lfs-cache
+        with:
+          path: .git/lfs
+          key: ${{ runner.os }}-lfs-${{ hashFiles('.lfs-assets-id') }}
+          
+      - name: Git LFS Pull
+        run: |
+          git lfs pull
+          git add .
+          git reset --hard
 
-      # Cache the Library/ folder to speed up imports
-      - uses: actions/cache@v4
+      # Cache
+      - name: Cache Library
+        uses: actions/cache@v4
         with:
           path: Library
           key: Library-${{ env.UNITY_VERSION }}-${{ hashFiles('**/Packages/manifest.json') }}
@@ -26,24 +46,46 @@ jobs:
 
       - name: Unity Test Runner
         uses: game-ci/unity-test-runner@v4
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         with:
             projectPath: ${{ env.PROJECT_PATH }}
             unityVersion: ${{ env.UNITY_VERSION }}
             githubToken: ${{ secrets.GITHUB_TOKEN }}
             # optional coverage
             customParameters: -enableCodeCoverage
-        env:
-          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
-          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
-          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
 
   build_client_win:
     name: Build Windows Client (x64)
     needs: tests
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/cache@v4
+      # Checkout (without LFS)
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      # Git LFS
+      - name: Create LFS file list
+        run: git lfs ls-files -l | cut -d' ' -f1 | sort > .lfs-assets-id
+        
+      - name: Restore LFS cache
+        uses: actions/cache@v4
+        id: lfs-cache
+        with:
+          path: .git/lfs
+          key: ${{ runner.os }}-lfs-${{ hashFiles('.lfs-assets-id') }}
+          
+      - name: Git LFS Pull
+        run: |
+          git lfs pull
+          git add .
+          git reset --hard
+
+      # Cache
+      - name: Cache Library
+        uses: actions/cache@v4
         with:
           path: Library
           key: Library-${{ env.UNITY_VERSION }}-${{ hashFiles('**/Packages/manifest.json') }}
@@ -75,8 +117,30 @@ jobs:
     needs: tests
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/cache@v4
+      # Checkout (without LFS)
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      # Git LFS
+      - name: Create LFS file list
+        run: git lfs ls-files -l | cut -d' ' -f1 | sort > .lfs-assets-id
+        
+      - name: Restore LFS cache
+        uses: actions/cache@v4
+        id: lfs-cache
+        with:
+          path: .git/lfs
+          key: ${{ runner.os }}-lfs-${{ hashFiles('.lfs-assets-id') }}
+          
+      - name: Git LFS Pull
+        run: |
+          git lfs pull
+          git add .
+          git reset --hard
+
+      # Cache
+      - name: Cache Library
+        uses: actions/cache@v4
         with:
           path: Library
           key: Library-${{ env.UNITY_VERSION }}-${{ hashFiles('**/Packages/manifest.json') }}
