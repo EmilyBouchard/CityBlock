@@ -1,0 +1,83 @@
+# .editorconfig
+root = true
+
+# Files we care about
+[*.{cs,csx,cake}]
+charset = utf-8
+end_of_line = lf
+indent_style = space
+indent_size = 4
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+# C# code-style (examples — extend as you like)
+csharp_prefer_braces = true:suggestion
+dotnet_style_qualification_for_field = false:suggestion
+dotnet_style_qualification_for_property = false:suggestion
+dotnet_style_qualification_for_event = false:suggestion
+dotnet_style_qualification_for_method = false:suggestion
+
+# Analyzer baseline: enable everything that's enabled-by-default, as W
+# (Disabled-by-default rules still need explicit IDs set below)
+dotnet_analyzer_diagnostic.severity = warning
+
+# ---------- Reliability & exceptions ----------
+dotnet_diagnostic.CA1062.severity = error
+dotnet_diagnostic.CA2208.severity = error
+dotnet_diagnostic.CA2214.severity = error
+dotnet_diagnostic.CA2200.severity = error
+dotnet_diagnostic.CA2201.severity = warning
+dotnet_diagnostic.CA1031.severity = warning
+dotnet_diagnostic.CA1065.severity = warning
+dotnet_diagnostic.CA1508.severity = warning
+
+# ---------- IDisposable & resource safety ----------
+dotnet_diagnostic.CA2000.severity = error
+dotnet_diagnostic.CA2213.severity = error
+dotnet_diagnostic.CA1001.severity = error
+dotnet_diagnostic.CA1816.severity = warning
+
+# ---------- Performance / hot paths ----------
+dotnet_diagnostic.CA1822.severity = warning
+dotnet_diagnostic.CA1812.severity = warning
+dotnet_diagnostic.CA1820.severity = warning
+dotnet_diagnostic.CA1830.severity = suggestion
+dotnet_diagnostic.CA1831.severity = suggestion
+dotnet_diagnostic.CA1852.severity = warning
+dotnet_diagnostic.CA1854.severity = warning
+dotnet_diagnostic.CA1859.severity = warning
+
+# ---------- Globalization & strings ----------
+dotnet_diagnostic.CA1307.severity = warning
+dotnet_diagnostic.CA1309.severity = warning
+dotnet_diagnostic.CA1305.severity = suggestion
+dotnet_diagnostic.CA1310.severity = suggestion
+
+# ---------- API design hygiene ----------
+dotnet_diagnostic.CA1000.severity = warning
+dotnet_diagnostic.CA1052.severity = warning
+dotnet_diagnostic.CA1051.severity = warning
+dotnet_diagnostic.CA2227.severity = warning
+dotnet_diagnostic.CA1724.severity = suggestion
+dotnet_diagnostic.CA1725.severity = suggestion
+
+# ---------- Security ----------
+dotnet_diagnostic.CA5350.severity = error
+dotnet_diagnostic.CA5351.severity = error
+dotnet_diagnostic.CA2100.severity = warning
+
+# ---------- Platform compatibility ----------
+dotnet_diagnostic.CA1416.severity = warning
+
+# ---------- Unity-noisy: disable or soften ----------
+dotnet_diagnostic.CA1303.severity = none
+dotnet_diagnostic.CA1707.severity = none
+dotnet_diagnostic.CA1710.severity = none
+dotnet_diagnostic.CA1711.severity = none
+dotnet_diagnostic.CA1720.severity = none
+dotnet_diagnostic.CA1040.severity = none
+dotnet_diagnostic.CA1819.severity = none
+dotnet_diagnostic.CA1054.severity = none
+dotnet_diagnostic.CA1055.severity = none
+dotnet_diagnostic.CA1056.severity = none
+dotnet_diagnostic.CA1848.severity = none

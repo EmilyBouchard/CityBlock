@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RuleSet Name="Unity CA Rules" ToolsVersion="16.0">
+  <!-- Set a default action for the analyzer assembly -->
+  <Rules AnalyzerId="Microsoft.CodeAnalysis.NetAnalyzers" RuleNamespace="Microsoft.CodeAnalysis.NetAnalyzers" Action="Warning">
+    <!-- Optional per-rule overrides -->
+    <Rule Id="CA1822" Action="Warning" />
+    <Rule Id="CA2201" Action="Warning" />
+  </Rules>
+  <Rules AnalyzerId="Microsoft.Unity.Analyzers" RuleNamespace="Microsoft.Unity.Analyzers" Action="Warning" />
+</RuleSet>
