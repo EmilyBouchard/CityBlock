@@ -11,11 +11,73 @@ insert_final_newline = true
 trim_trailing_whitespace = true
 
 # C# code-style (examples — extend as you like)
-csharp_prefer_braces = true:suggestion
+csharp_prefer_braces = when_multiline:suggestion
+csharp_style_var_for_built_in_types = true:suggestion
+csharp_style_var_when_type_is_apparent = true:suggestion
+#csharp_style_var_elsewhere = false:suggestion
+csharp_style_prefer_null_check_over_type_check = true:suggestion
+csharp_style_conditional_delegate_call = true:suggestion
+csharp_style_expression_bodied_methods = when_on_single_line:suggestion
+csharp_style_expression_bodied_properties = when_on_single_line:suggestion
+csharp_style_expression_bodied_constructors = false:none
+csharp_style_pattern_matching_over_is_with_cast_check = true:suggestion
+csharp_style_pattern_matching_over_as_with_null_check = true:suggestion
+csharp_style_prefer_not_pattern = true:suggestion
+csharp_style_inlined_variable_declaration = true:suggestion
+csharp_prefer_simple_using_statement = true:suggestion
+
+csharp_new_line_before_open_brace = all
+csharp_new_line_between_control_flow_statements = true
+csharp_new_line_for_embedded_statements = true
+
+# No space inside parentheses
+csharp_space_between_parentheses = false
+
+# No space before an open square bracket
+csharp_space_before_open_square_brackets = false
+
+# No space after a cast
+csharp_space_after_cast = false
+
+# Space after keywords like 'if', 'for', 'while'
+csharp_space_after_keywords_in_control_flow_statements = true
+
 dotnet_style_qualification_for_field = false:suggestion
 dotnet_style_qualification_for_property = false:suggestion
 dotnet_style_qualification_for_event = false:suggestion
 dotnet_style_qualification_for_method = false:suggestion
+
+dotnet_style_predefined_type_for_locals_parameters_members = true:suggestion
+dotnet_style_predefined_type_for_member_access = true:suggestion
+
+dotnet_style_object_initializer = true:suggestion
+dotnet_style_collection_initializer = true:suggestion
+dotnet_style_explicit_tuple_names = true:suggestion
+
+dotnet_style_require_accessibility_modifiers = always:warning
+dotnet_style_readonly_field = true:warning
+dotnet_style_readonly_struct = true:suggestion
+dotnet_style_prefer_in_parameters = true:suggestion
+dotnet_style_prefer_auto_properties = true:suggestion
+
+dotnet_style_coalesce_expression = true:suggestion
+dotnet_style_null_propagation = true:suggestion
+dotnet_style_prefer_is_null_check_over_reference_equality_method = true:suggestion
+
+dotnet_style_pattern_matching_over_is_with_cast_check = true:suggestion
+dotnet_style_pattern_matching_over_as_with_null_check = true:suggestion
+dotnet_style_prefer_not_pattern = true:suggestion
+
+dotnet_style_prefer_simplified_boolean_expressions = true:suggestion
+dotnet_style_prefer_simplified_interpolation = true:suggestion
+dotnet_style_prefer_compound_assignment = true:suggestion
+
+dotnet_style_namespace_match_folder = true:suggestion
+dotnet_style_prefer_top_level_statements = false:suggestion
+
+# Don't require explicit accessibility (e.g., 'private') on members
+dotnet_style_require_accessibility_modifiers = never:warning
+dotnet_diagnostic.IDE0040.severity = none  # belt-and-suspenders: completely disable the diagnostic
 
 # Analyzer baseline: enable everything that's enabled-by-default, as W
 # (Disabled-by-default rules still need explicit IDs set below)
@@ -77,7 +139,76 @@ dotnet_diagnostic.CA1711.severity = none
 dotnet_diagnostic.CA1720.severity = none
 dotnet_diagnostic.CA1040.severity = none
 dotnet_diagnostic.CA1819.severity = none
+dotnet_diagnostic.CA1051.severity = none
 dotnet_diagnostic.CA1054.severity = none
 dotnet_diagnostic.CA1055.severity = none
 dotnet_diagnostic.CA1056.severity = none
 dotnet_diagnostic.CA1848.severity = none
+
+
+# ----------- StyleCop -------------
+dotnet_analyzer_diagnostic.category-StyleCop.severity = warning
+
+dotnet_diagnostic.SA0001.severity = none                  # XML doc validity
+dotnet_diagnostic.SA1600.severity = none                  # XML docs on public members
+dotnet_diagnostic.SA1601.severity = none                  # Partial element doc
+dotnet_diagnostic.SA1633.severity = none                  # File header
+
+# this. preference handled elsewhere
+dotnet_diagnostic.SA1101.severity = none
+
+# Using placement and ordering: keep tidy
+dotnet_diagnostic.SA1200.severity = warning
+dotnet_diagnostic.SA1210.severity = suggestion  # using directives should be ordered alphabetically
+dotnet_diagnostic.SA1208.severity = suggestion  # system usings first
+
+# Newlines & file layout nudges
+dotnet_diagnostic.SA1516.severity = suggestion  # elements separated by blank line
+dotnet_diagnostic.SA1518.severity = warning     # file must end with newline
+
+# Naming: keep flexible for game code (private_underscores allowed)
+dotnet_diagnostic.SA1309.severity = none        # field names should not begin with underscore
+dotnet_diagnostic.SA1310.severity = none        # field names should not contain underscore
+
+# ============================
+# StyleCop – spacing enforcement
+# ============================
+
+# ---- Token spacing rules ----
+dotnet_diagnostic.SA1000.severity = warning   # Keywords spaced correctly
+dotnet_diagnostic.SA1001.severity = warning   # Commas spaced correctly
+dotnet_diagnostic.SA1002.severity = warning   # Semicolons spaced correctly
+dotnet_diagnostic.SA1003.severity = warning   # Symbols spaced correctly (no padding like x  +  y)
+dotnet_diagnostic.SA1006.severity = warning   # Preprocessor keywords no space
+dotnet_diagnostic.SA1007.severity = warning   # Operator keyword spacing
+dotnet_diagnostic.SA1008.severity = warning   # Opening parenthesis spacing
+dotnet_diagnostic.SA1009.severity = warning   # Closing parenthesis spacing
+dotnet_diagnostic.SA1010.severity = warning   # Opening square bracket spacing
+dotnet_diagnostic.SA1011.severity = warning   # Closing square bracket spacing
+dotnet_diagnostic.SA1012.severity = warning   # Opening brace spacing
+dotnet_diagnostic.SA1013.severity = warning   # Closing brace spacing
+dotnet_diagnostic.SA1014.severity = warning   # Opening generic angle bracket spacing
+dotnet_diagnostic.SA1015.severity = warning   # Closing generic angle bracket spacing
+dotnet_diagnostic.SA1016.severity = warning   # Opening attribute bracket spacing
+dotnet_diagnostic.SA1017.severity = warning   # Closing attribute bracket spacing
+dotnet_diagnostic.SA1018.severity = warning   # Nullable type spacing
+dotnet_diagnostic.SA1019.severity = warning   # Member access symbol spacing
+dotnet_diagnostic.SA1020.severity = warning   # Increment/decrement spacing
+dotnet_diagnostic.SA1021.severity = warning   # Negative sign spacing
+dotnet_diagnostic.SA1022.severity = warning   # Positive sign spacing
+
+# ---- Comment spacing (optional) ----
+dotnet_diagnostic.SA1004.severity = suggestion   # XML doc lines should start with single space
+dotnet_diagnostic.SA1005.severity = suggestion   # // comments should start with space
+
+# ---- Blank line rules ----
+dotnet_diagnostic.SA1506.severity = warning   # Docs headers not followed by blank line
+dotnet_diagnostic.SA1507.severity = warning   # No multiple blank lines in a row
+dotnet_diagnostic.SA1516.severity = warning   # Elements should be separated by exactly one blank line
+
+# ---- Formatting baseline ----
+dotnet_diagnostic.IDE0055.severity = warning  # Fix formatting (Roslyn)
+
+# Unity event methods don't need explicit modifiers
+dotnet_diagnostic.SA1400.severity = none   # no "missing accessibility modifier"
+dotnet_diagnostic.SA1206.severity = none   # no "inconsistent modifier order"
